@@ -3,6 +3,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../assets/styles/GlobalStyle";
 import { theme } from "../assets/styles/theme";
+import { Wrapper } from './Root.styles'
 
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com",
@@ -15,7 +16,9 @@ const Root = () => {
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        EXPLORE CONTINENTS
+        <Wrapper>
+          EXPLORE CONTINENTS
+        </Wrapper>
       </ThemeProvider >
     </ApolloProvider>
   );
