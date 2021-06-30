@@ -54,11 +54,20 @@ const GetCountries = ({ match }: any) => {
     if (loading) return <p>Loading...</p>;
     const { countries }: any = data;
 
-    return (
-        <>
-
-        </>
+    return continentCode == "AN" ? (
+        <p>looks like there are no countires in Antarctica!</p>
+    ) : (
+        <Wrapper>
+            {countries.map((c: any, i: any) => (
+                <Country key={i}>
+                    <h2>{c.name}</h2>
+                    <p>{c.emoji}</p>
+                    <p>language: {c.languages[0].name}</p>
+                </Country>
+            ))}
+        </Wrapper>
     );
 };
 
 export default GetCountries;
+
