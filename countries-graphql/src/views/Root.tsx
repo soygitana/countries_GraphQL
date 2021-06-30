@@ -3,8 +3,9 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../assets/styles/GlobalStyle";
 import { theme } from "../assets/styles/theme";
-import { Wrapper } from './Root.styles'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Wrapper } from './Root.styles';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './Home'
 
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com",
@@ -19,11 +20,10 @@ const Root = () => {
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Wrapper>
-            EXPLORE CONTINENTS
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/continents" component={GetContinents} />
-              <Route exact path="/continents/:code" component={GetCountries} />
+              {/* <Route exact path="/continents" component={GetContinents} />
+              <Route exact path="/continents/:code" component={GetCountries} /> */}
             </Switch>
           </Wrapper>
         </ThemeProvider >
