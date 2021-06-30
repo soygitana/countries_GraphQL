@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../assets/styles/GlobalStyle";
 import { theme } from "../assets/styles/theme";
 import { Wrapper } from './Root.styles'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com",
@@ -14,12 +15,19 @@ const client = new ApolloClient({
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Wrapper>
-          EXPLORE CONTINENTS
-        </Wrapper>
-      </ThemeProvider >
+      <Router>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <Wrapper>
+            EXPLORE CONTINENTS
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/continents" component={GetContinents} />
+              <Route exact path="/continents/:code" component={GetCountries} />
+            </Switch>
+          </Wrapper>
+        </ThemeProvider >
+      </Router>
     </ApolloProvider>
   );
 }
