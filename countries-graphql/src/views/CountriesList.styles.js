@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Country = styled.div`
+export const CountryItem = styled.div`
   align-self: center;
   justify-self: center;
   display: flex;

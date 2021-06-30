@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import { Country } from "./CountriesList.styles";
+import { CountryItem } from "./CountriesList.styles";
 import { Wrapper } from "./CountriesList.styles";
 
 interface Country {
@@ -54,16 +54,16 @@ const GetCountries = ({ match }: any) => {
     if (loading) return <p>Loading...</p>;
     const { countries }: any = data;
 
-    return continentCode == "AN" ? (
+    return continentCode === "AN" ? (
         <p>looks like there are no countires in Antarctica!</p>
     ) : (
         <Wrapper>
             {countries.map((c: any, i: any) => (
-                <Country key={i}>
+                <CountryItem key={i}>
                     <h2>{c.name}</h2>
                     <p>{c.emoji}</p>
                     <p>language: {c.languages[0].name}</p>
-                </Country>
+                </CountryItem>
             ))}
         </Wrapper>
     );
