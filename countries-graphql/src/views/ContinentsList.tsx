@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import { ListItem } from "./ContinentsList.styles";
-import { Wrapper } from "./ContinentsList.styles";
+import { ListItem } from "./ContinentList.styles";
+import { Wrapper } from "./ContinentList.styles";
 
 interface Continent {
     name: string;
@@ -30,9 +30,14 @@ const GetContinents = () => {
     const { continents }: any = data;
 
     return (
-        <>
-            Continents List
-        </>
+        <Wrapper>
+            {continents.map((c: any, i: any) => (
+                <ListItem to={`/continents/${c.code}`} key={i}>
+                    <h2>{c.name}</h2>
+                    <p>{c.code}</p>
+                </ListItem>
+            ))}
+        </Wrapper>
     );
 };
 
