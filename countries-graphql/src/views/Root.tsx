@@ -1,6 +1,8 @@
 import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "../assets/styles/GlobalStyle";
+import { theme } from "../assets/styles/theme";
 
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com",
@@ -11,9 +13,10 @@ const client = new ApolloClient({
 const Root = () => {
   return (
     <ApolloProvider client={client}>
-
-      EXPLORE CONTINENTS
-
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        EXPLORE CONTINENTS
+      </ThemeProvider >
     </ApolloProvider>
   );
 }
