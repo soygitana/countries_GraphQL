@@ -1,5 +1,7 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
+import { ListItem } from "./ContinentsList.styles";
+import { Wrapper } from "./ContinentsList.styles";
 
 interface Continent {
     name: string;
