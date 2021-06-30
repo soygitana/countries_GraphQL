@@ -1,15 +1,12 @@
 import React from 'react';
-
+import { Button } from './Home.styles';
 
 const Home = () => {
-
     return (
         <>
-            EXPLORE CONTINENTS
+            <Button to="/continents">EXPLORE CONTINENTS</Button>
         </>
-
     )
-
 }
 
 export default Home;

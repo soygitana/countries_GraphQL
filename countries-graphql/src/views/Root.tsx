@@ -5,7 +5,7 @@ import { GlobalStyle } from "../assets/styles/GlobalStyle";
 import { theme } from "../assets/styles/theme";
 import { Wrapper } from './Root.styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './Home'
+import Home from './Home';
 
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com",
