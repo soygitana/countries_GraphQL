@@ -7,12 +7,12 @@ import { Wrapper } from './Root.styles';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import GetContinents from './ContinentsList';
+import GetCountries from './CountriesList'
 
 const client = new ApolloClient({
   uri: "https://countries.trevorblades.com",
   cache: new InMemoryCache(),
 });
-
 
 const Root = () => {
   return (
@@ -24,7 +24,7 @@ const Root = () => {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/continents" component={GetContinents} />
-              {/* <Route exact path="/continents/:code" component={GetCountries} /> */}
+              <Route exact path="/continents/:code" component={GetCountries} />
             </Switch>
           </Wrapper>
         </ThemeProvider >
