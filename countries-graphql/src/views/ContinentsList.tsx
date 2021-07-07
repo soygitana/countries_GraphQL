@@ -12,7 +12,7 @@ interface ContinentsData {
     continent: Continent[];
 }
 
-const LIST_CONTINENTS = gql`
+const CONTINENTS_LIST = gql`
     {
       continents {
         name
@@ -21,9 +21,11 @@ const LIST_CONTINENTS = gql`
     }
   `;
 
+
+
 const GetContinents = () => {
 
-    const { data, loading, error } = useQuery<ContinentsData>(LIST_CONTINENTS);
+    const { data, loading, error } = useQuery<ContinentsData>(CONTINENTS_LIST);
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -31,7 +33,7 @@ const GetContinents = () => {
 
     return (
         <Wrapper>
-            {continents.map((c: any, i: any) => (
+            {continents.map((c: any, i: number) => (
                 <ListItem to={`/continents/${c.code}`} key={i}>
                     <h2>{c.name}</h2>
                     <p>{c.code}</p>

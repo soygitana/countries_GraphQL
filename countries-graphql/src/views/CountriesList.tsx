@@ -6,10 +6,13 @@ import { Wrapper } from "./CountriesList.styles";
 interface Country {
     name: string;
     code: string;
-    capital: string;
+    emoji: string;
     continent: {
         name: string;
     };
+    languages: {
+        name: string;
+    }
 }
 
 interface CountryData {
@@ -20,7 +23,7 @@ interface CountryVariable {
     code: string;
 }
 
-const COUNTRIES_QUERY = gql`
+const COUNTRIES_LIST = gql`
   query Counties($code: String) {
     countries(filter: { continent: { eq: $code } }) {
       name
@@ -43,7 +46,7 @@ const GetCountries = ({ match }: any) => {
 
     const continentCode = code;
     const { data, loading } = useQuery<CountryData, CountryVariable>(
-        COUNTRIES_QUERY,
+        COUNTRIES_LIST,
         {
             variables: {
                 code: continentCode,
@@ -55,10 +58,10 @@ const GetCountries = ({ match }: any) => {
     const { countries }: any = data;
 
     return continentCode === "AN" ? (
-        <p>looks like there are no countires in Antarctica!</p>
+        <p>looks like there are no countries in Antarctica!</p>
     ) : (
         <Wrapper>
-            {countries.map((c: any, i: any) => (
+            {countries.map((c: any, i: number) => (
                 <CountryItem key={i}>
                     <h2>{c.name}</h2>
                     <p>{c.emoji}</p>
