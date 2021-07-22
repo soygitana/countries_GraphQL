@@ -25,7 +25,7 @@ const CONTINENTS_LIST = gql`
 
 const GetContinents = () => {
 
-    const { data, loading, error } = useQuery<ContinentsData>(CONTINENTS_LIST);
+    const { data, loading } = useQuery<ContinentsData>(CONTINENTS_LIST);
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -33,8 +33,8 @@ const GetContinents = () => {
 
     return (
         <Wrapper>
-            {continents.map((c: any, i: number) => (
-                <ListItem to={`/continents/${c.code}`} key={i}>
+            {continents.map((c: any) => (
+                <ListItem to={`/continents/${c.code}`} key={c.code}>
                     <h2>{c.name}</h2>
                     <p>{c.code}</p>
                 </ListItem>
